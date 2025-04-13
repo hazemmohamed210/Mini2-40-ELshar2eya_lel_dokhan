@@ -28,7 +28,7 @@ public class TripService {
     }
 
     public Trip getTripById(long id) {
-        return tripRepository.findById(id).orElse(null);
+        return tripRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Trip not found with id: " + id));
     }
 
     public Trip updateTrip(Long id, Trip trip) {
@@ -47,7 +47,11 @@ public class TripService {
     }
 
     public void deleteTrip(long id) {
-        tripRepository.deleteById(id);
+        if(tripRepository.existsById(id)) {
+            tripRepository.deleteById(id);
+        }else {
+            throw new IllegalArgumentException("Trip not found with id: " + id);
+        }
     }
 
     public List<Trip> findTripsWithinDateRange(LocalDateTime startDate, LocalDateTime endDate){
