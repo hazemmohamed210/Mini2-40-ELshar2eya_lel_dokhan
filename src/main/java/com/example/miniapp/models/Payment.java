@@ -7,12 +7,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "payment")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+    private double amount;
+    private String paymentMethod;
+    private Boolean paymentStatus;
+
+    @OneToOne
+    @JoinColumn(name = "trip_id", referencedColumnName = "id")
+    private Trip trip;
 }
