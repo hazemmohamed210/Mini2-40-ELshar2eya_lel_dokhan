@@ -22,13 +22,13 @@ public class Trip {
     private String Destination;
     private Double TripCost;
 
-    //@ManyToOne
-    //@JoinColumn(name = "captain_id")
-    //private Captain captain;
+    @ManyToOne
+    @JoinColumn(name = "captain_id")
+    private Captain captain;
 
-    //@ManyToOne
-    //@JoinColumn(name = "customer_id")
-    //private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Trip(LocalDateTime TripDate, String Origin, String Destination, Double TripCost) {
         this.TripDate = TripDate;
