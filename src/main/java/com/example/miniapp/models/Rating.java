@@ -19,4 +19,12 @@ public class Rating {
     private Integer score;
     private String comment;
     private LocalDateTime ratingDate;
+
+    public Rating(Long entityId, String entityType, Integer score, String comment, LocalDateTime ratingDate) {
+        this.entityId = entityId;
+        this.entityType = entityType;
+        this.score = score;
+        this.comment = comment;
+        this.ratingDate = ratingDate;
+    }
 }

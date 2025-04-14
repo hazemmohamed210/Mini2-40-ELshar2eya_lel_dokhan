@@ -17,11 +17,15 @@ public class RatingService {
     }
 
     public Rating addRating(Rating rating) {
+        if(rating == null) throw new IllegalArgumentException();
+
         Rating newRating = ratingRepository.save(rating);
         return newRating;
     }
 
     public Rating updateRating(String id, Rating updatedRating) {
+        if(id == null || updatedRating == null) throw new IllegalArgumentException();
+
         Optional<Rating> toBeUpdatedRatingOptional = ratingRepository.findById(id);
         Rating toBeUpdatedRating;
 
@@ -36,10 +40,16 @@ public class RatingService {
     }
 
     public void deleteRating(String id) {
+        if(id == null) throw new IllegalArgumentException();
+
+        if(!ratingRepository.existsById(id)) return;
+
         ratingRepository.deleteById(id);
     }
 
     public List<Rating> getRatingsByEntity(Long entityId, String entityType) {
+        if(entityId == null || entityId == null) throw new IllegalArgumentException();
+
         List<Rating> ratings = ratingRepository.findAllByEntityIDAndEntityType(entityId, entityType);
         return ratings;
     }

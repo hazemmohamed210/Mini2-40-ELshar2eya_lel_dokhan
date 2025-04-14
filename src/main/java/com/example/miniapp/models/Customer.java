@@ -22,4 +22,11 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Trip> trips;
+
+    public Customer(String name, String email, String phoneNumber, List<Trip> trips) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.trips = trips;
+    }
 }

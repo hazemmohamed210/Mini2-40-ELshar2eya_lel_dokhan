@@ -22,4 +22,11 @@ public class Payment {
     @OneToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "id")
     private Trip trip;
+
+    public Payment(double amount, String paymentMethod, Boolean paymentStatus, Trip trip) {
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
+        this.trip = trip;
+    }
 }
