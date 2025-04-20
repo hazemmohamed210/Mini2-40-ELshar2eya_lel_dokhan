@@ -29,4 +29,10 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.trips = trips;
     }
+
+    public Customer(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 }

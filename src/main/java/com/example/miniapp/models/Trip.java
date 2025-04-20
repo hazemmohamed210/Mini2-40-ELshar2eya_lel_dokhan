@@ -9,18 +9,18 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "trip")
+@Table(name = "trips")
 public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
-    private LocalDateTime TripDate;
-    private String Origin;
-    private String Destination;
-    private Double TripCost;
+    private Long id;
+    private LocalDateTime tripDate;
+    private String origin;
+    private String destination;
+    private Double tripCost;
 
     @ManyToOne
     @JoinColumn(name = "captain_id")
@@ -30,10 +30,10 @@ public class Trip {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public Trip(LocalDateTime TripDate, String Origin, String Destination, Double TripCost) {
-        this.TripDate = TripDate;
-        this.Origin = Origin;
-        this.Destination = Destination;
-        this.TripCost = TripCost;
+    public Trip(LocalDateTime tripDate, String origin, String destination, Double tripCost) {
+        this.tripDate = tripDate;
+        this.origin = origin;
+        this.destination = destination;
+        this.tripCost = tripCost;
     }
 }

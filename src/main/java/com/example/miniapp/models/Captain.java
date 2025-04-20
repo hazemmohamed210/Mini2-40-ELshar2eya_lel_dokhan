@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "captain")
+@Table(name = "captains")
 public class Captain {
 
     @Id
@@ -24,10 +24,16 @@ public class Captain {
     @OneToMany(mappedBy = "captain", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Trip> trips;
 
-    public Captain(String name, String licenseNumber, Double avgRatingScore,List trips) {
+    public Captain(String name, String licenseNumber, Double avgRatingScore, List<Trip> trips) {
         this.name = name;
         this.licenseNumber = licenseNumber;
         this.avgRatingScore = avgRatingScore;
         this.trips = trips;
+    }
+
+    public Captain(String name, String licenseNumber, Double avgRatingScore) {
+        this.name = name;
+        this.licenseNumber = licenseNumber;
+        this.avgRatingScore = avgRatingScore;
     }
 }
