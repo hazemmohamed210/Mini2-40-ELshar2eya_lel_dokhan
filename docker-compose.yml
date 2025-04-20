@@ -14,8 +14,9 @@ services:
       SPRING_DATASOURCE_USERNAME: elshar2eya_lel_dokhan
       SPRING_DATASOURCE_PASSWORD: 1234
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATA_MONGODB_URI: mongodb://elshar2eya_lel_dokhan:1234@mongo:27017/elshar2eya_lel_dokhan_mongodb?authSource=admin
     ports:
-      - "2727:8080"
+      - "8080:8080"
     networks:
       - springboot-network
 
@@ -35,6 +36,7 @@ services:
 
   mongo:
     image: mongo
+    container_name: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: elshar2eya_lel_dokhan
@@ -42,6 +44,8 @@ services:
       MONGO_INITDB_DATABASE: elshar2eya_lel_dokhan_mongodb
     ports:
       - "27017:27017"
+    networks:
+      - springboot-network
 
 #  mongo-express:
 #    image: mongo-express

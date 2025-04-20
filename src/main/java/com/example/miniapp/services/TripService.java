@@ -28,7 +28,7 @@ public class TripService {
     }
 
     public Trip getTripById(long id) {
-        return tripRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Trip not found with id: " + id));
+        return tripRepository.findById(id).orElse(null);
     }
 
     public Trip updateTrip(Long id, Trip trip) {
@@ -49,8 +49,6 @@ public class TripService {
     public void deleteTrip(long id) {
         if(tripRepository.existsById(id)) {
             tripRepository.deleteById(id);
-        }else {
-            throw new IllegalArgumentException("Trip not found with id: " + id);
         }
     }
 

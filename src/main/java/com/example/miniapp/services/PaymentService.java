@@ -21,7 +21,7 @@ public class PaymentService {
 
     public List<Payment> getAllPayments() { return paymentRepository.findAll(); }
 
-    public Payment getPaymentById(Long id){ return paymentRepository.findById(id).orElseThrow(() -> new RuntimeException("Payment not found with id: " + id)); }
+    public Payment getPaymentById(Long id){ return paymentRepository.findById(id).orElse(null); }
 
     public Payment updatePayment(Long id, Payment payment){
         Payment existing = getPaymentById(id);
@@ -35,8 +35,6 @@ public class PaymentService {
     public void deletePayment(Long id){
         if (paymentRepository.existsById(id)) {
             paymentRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Payment not found with id: " + id);
         }
     }
 
